@@ -3,36 +3,36 @@ import java.util.Map;
 
 public class BookService implements BookServiceInterface {
 
-    private BookDao bookDao;
+    private BookServiceInterface bookServiceInterface;
 
-    public BookService(BookDao bookDao) {
-        this.bookDao = bookDao;
+    public BookService(BookServiceInterface bookServiceInterface) {
+        this.bookServiceInterface = bookServiceInterface;
     }
 
     public Book getById(long id) {
 
-        Book result = bookDao.getById(id);
+        Book result = bookServiceInterface.getById(id);
         if (result == null) {
             throw new IllegalArgumentException("Cannot find book with this ID" + id);
         }
         return result;
     }
 
-    public Map<Long, Book> delete(long id) {
+    public String delete(long id) {
 
-        return bookDao.delete(id);
+        return bookServiceInterface.delete(id);
     }
 
     public Map<Long, Book> showBook() {
-        return bookDao.showBook();
+        return bookServiceInterface.showBook();
     }
 
-    public Map<Long, Book> addBook(String bookName, String authorName) {
-        return bookDao.addBook(bookName, authorName);
+    public Book addBook(String bookName, String authorName) {
+        return bookServiceInterface.addBook(bookName, authorName);
     }
 
     public Book updateBook(Book book) {
-        return bookDao.updateBook(book);
+        return bookServiceInterface.updateBook(book);
     }
 
 }

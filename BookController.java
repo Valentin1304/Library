@@ -16,7 +16,7 @@ public class BookController {
 
     }
 
-    public Map<Long, Book> delete(long id) {
+    public String delete(long id) {
         return bookServiceInterface.delete(id);
     }
 
@@ -25,7 +25,7 @@ public class BookController {
     }
 
 
-    public Map<Long, Book> addBook(String bookName, String authorName) {
+    public Book addBook(String bookName, String authorName) {
         return bookServiceInterface.addBook(bookName, authorName);
     }
 

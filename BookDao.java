@@ -3,7 +3,7 @@ import org.w3c.dom.ls.LSOutput;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class BookDao {
+public class BookDao implements BookServiceInterface {
     private BookCatalog bookCatalog;
 
     public BookDao(BookCatalog bookCatalog) {
@@ -17,10 +17,10 @@ public class BookDao {
     }
 
 
-    public Map<Long, Book> delete(long idd) {
-        bookCatalog.getBooks().remove(idd);
-        Map<Long, Book> book = bookCatalog.getBooks();
-        return book;
+    public String delete(long id) {
+        bookCatalog.getBooks().remove(id);
+        String a = "Запись удалена";
+        return a;
 
     }
 
@@ -35,16 +35,16 @@ public class BookDao {
         return max + 1;
     }
 
-    public Map<Long, Book> addBook(String bookName, String authorName) {
+    public Book addBook(String bookName, String authorName) {
         Map<Long, Book> books = bookCatalog.getBooks();
         books.put(createId(), new Book(createId(), bookName, authorName));
-        return bookCatalog.getBooks();
+        return books.get((createId()-1));
     }
 
     public Book updateBook(Book book) {
         Long id = book.getId();
         bookCatalog.getBooks().put(id,book);
-        return bookCatalog.getBooks().put(id,book);
+        return bookCatalog.getBooks().put(id, book);
     }
 
 }

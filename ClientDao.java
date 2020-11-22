@@ -2,7 +2,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
-public class ClientDao {
+public class ClientDao implements ClientDaoInterface{
     private ClientCatalog clientCatalog;
 
     public ClientDao(ClientCatalog clientCatalog) {
@@ -16,10 +16,10 @@ public class ClientDao {
     }
 
 
-    public Map<Long, Client> deleteById(long idd) {
-        clientCatalog.getClient().remove(idd);
-        Map<Long, Client> client = clientCatalog.getClient();
-        return client;
+    public String delete(long id) {
+        clientCatalog.getClient().remove(id);
+        String a = "Клиент удален";
+        return a;
 
     }
 
@@ -34,9 +34,15 @@ public class ClientDao {
         return max + 1;
     }
 
-    public Map<Long, Client> addClient(String firstName, String secondName, int age) {
+    public Client addClient(String firstName, String secondName, int age) {
         Map<Long, Client> clients = clientCatalog.getClient();
         clients.put(createId(), new Client(createId(), firstName, secondName, age));
-        return clientCatalog.getClient();
+        return clients.get(createId()-1);
+    }
+    public Client updateClient (Client client){
+        Long id = client.getId();
+        clientCatalog.getClient().put(id,client);
+        return  clientCatalog.getClient().put(id,client);
+
     }
 }

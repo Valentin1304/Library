@@ -1,27 +1,29 @@
 import java.util.Map;
 
 public class ClientController {
-    private ClientService clientService;
+   private ClientServiceInterface clientServiceInterface;
 
-    public ClientController(ClientService clientService) {
-        this.clientService = clientService;
+    public ClientController(ClientServiceInterface clientServiceInterface) {
+        this.clientServiceInterface = clientServiceInterface;
     }
 
-    public Client clientIdFromAdapter(long id) {
-        return clientService.getById(id);
+    public Client getById(long id) { return clientServiceInterface.getById(id);}
 
-    }
-
-    public Map<Long, Client> clientIdForDelete(long idd) {
-        return clientService.deleteById(idd);
+    public String delete(long id) {
+        return clientServiceInterface.delete(id);
     }
 
     public Map<Long, Client> showClient() {
-        return clientService.showClient();
+        return clientServiceInterface.showClient();
     }
 
 
-    public Map<Long, Client> addClient(String firstName, String secondName, int age) {
-        return clientService.addClient(firstName, secondName, age);
+    public Client addClient(String firstName, String secondName, int age) {
+        return clientServiceInterface.addClient(firstName, secondName, age);
+    }
+
+    public Client updateClient(long id, String firstName, String secondName, int age) {
+        Client client = new Client(id, firstName, secondName, age);
+        return clientServiceInterface.updateClient(client);
     }
 }

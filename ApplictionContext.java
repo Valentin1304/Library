@@ -34,4 +34,20 @@ public class ApplictionContext {
     public Object getObjectt(Class clazz) {
         return context.get(clazz);
     }
+
+    public void intializeCotexttt() {
+        OrderCatalog orderCatalog = new OrderCatalog();
+        OrderDao orderDao = new OrderDao(orderCatalog);
+        OrderService orderService = new OrderService(orderDao);
+        OrderController orderController = new OrderController(orderService);
+        context.put(OrderController.class, orderController);
+
+
+    }
+
+    public Object getObjecttt(Class clazz) {
+        return context.get(clazz);
+    }
+
+
 }

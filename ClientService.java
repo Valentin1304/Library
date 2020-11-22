@@ -1,30 +1,33 @@
 import java.util.Map;
 
-public class ClientService {
-    private ClientDao clientDao;
+public class ClientService implements ClientServiceInterface{
+    private ClientDaoInterface clientDaoInterface;
 
-    public ClientService(ClientDao clientDao) {
-        this.clientDao = clientDao;
+    public ClientService(ClientDaoInterface clientDaoInterface) {
+        this.clientDaoInterface = clientDaoInterface;
     }
 
     public Client getById(long id) {
-        Client result = clientDao.getById(id);
+        Client result = clientDaoInterface.getById(id);
         if (result == null) {
             throw new IllegalArgumentException("Cannot find book with this ID" + id);
         }
         return result;
     }
 
-    public Map<Long, Client> deleteById(long idd) {
+    public String delete(long id) {
 
-        return clientDao.deleteById(idd);
+        return clientDaoInterface.delete(id);
     }
 
     public Map<Long, Client> showClient() {
-        return clientDao.showClient();
+        return clientDaoInterface.showClient();
     }
 
-    public Map<Long, Client> addClient(String firstName, String secondName, int age) {
-        return clientDao.addClient(firstName, secondName, age);
+    public Client addClient(String firstName, String secondName, int age) {
+        return clientDaoInterface.addClient(firstName, secondName, age);
+    }
+    public Client updateClient(Client client){
+        return clientDaoInterface.updateClient(client);
     }
 }
