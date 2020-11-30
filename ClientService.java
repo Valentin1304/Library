@@ -1,6 +1,6 @@
 import java.util.Map;
 
-public class ClientService implements ClientServiceInterface{
+public class ClientService implements ClientServiceInterface {
     private ClientDaoInterface clientDaoInterface;
 
     public ClientService(ClientDaoInterface clientDaoInterface) {
@@ -15,19 +15,19 @@ public class ClientService implements ClientServiceInterface{
         return result;
     }
 
-    public String delete(long id) {
-
-        return clientDaoInterface.delete(id);
+    public void delete(long id) {
+        clientDaoInterface.delete(id);
     }
 
-    public Map<Long, Client> showClient() {
-        return clientDaoInterface.showClient();
+    public Map<Long, Client> getClients() {
+        return clientDaoInterface.getClients();
     }
 
     public Client addClient(String firstName, String secondName, int age) {
         return clientDaoInterface.addClient(firstName, secondName, age);
     }
-    public Client updateClient(Client client){
+
+    public Client updateClient(Client client) {
         return clientDaoInterface.updateClient(client);
     }
 }

@@ -3,7 +3,6 @@ import java.util.Map;
 
 public class BookController {
 
-
     private BookServiceInterface bookServiceInterface;
 
     public BookController(BookServiceInterface bookServiceInterface) {
@@ -13,15 +12,14 @@ public class BookController {
     public Book getById(long id) {
 
         return bookServiceInterface.getById(id);
-
     }
 
-    public String delete(long id) {
-        return bookServiceInterface.delete(id);
+    public void delete(long id) {
+        bookServiceInterface.delete(id);
     }
 
-    public Map<Long, Book> showBook() {
-        return bookServiceInterface.showBook();
+    public Map<Long, Book> getAllBooks() {
+        return bookServiceInterface.getAllBooks();
     }
 
 

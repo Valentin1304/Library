@@ -18,13 +18,10 @@ public class BookService implements BookServiceInterface {
         return result;
     }
 
-    public String delete(long id) {
+    public void delete(long id) { bookServiceInterface.delete(id);    }
 
-        return bookServiceInterface.delete(id);
-    }
-
-    public Map<Long, Book> showBook() {
-        return bookServiceInterface.showBook();
+    public Map<Long, Book> getAllBooks() {
+        return bookServiceInterface.getAllBooks();
     }
 
     public Book addBook(String bookName, String authorName) {

@@ -1,12 +1,12 @@
 public class Book {
     private Long id;
     private String bookName;
-    private String AuthorName;
+    private String authorName;
 
     public Book(Long id, String bookName, String authorName) {
         this.id = id;
         this.bookName = bookName;
-        AuthorName = authorName;
+        this.authorName = authorName;
     }
 
     public Long getId() {
@@ -26,11 +26,11 @@ public class Book {
     }
 
     public String getAuthorName() {
-        return AuthorName;
+        return authorName;
     }
 
     public void setAuthorName(String authorName) {
-        AuthorName = authorName;
+        this.authorName = authorName;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", bookName='" + bookName + '\'' +
-                ", AuthorName='" + AuthorName + '\'' +
+                ", authorName='" + authorName + '\'' +
                 '}';
     }
 }

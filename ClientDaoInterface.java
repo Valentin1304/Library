@@ -2,9 +2,13 @@ import java.util.Map;
 
 public interface ClientDaoInterface {
     public Client getById(long id);
-    public String delete(long id);
-    public Map<Long, Client> showClient();
+
+    public void delete(long id);
+
+    public Map<Long, Client> getClients();
+
     public Client addClient(String firstName, String secondName, int age);
-    public Client updateClient (Client client);
+
+    public Client updateClient(Client client);
 
 }

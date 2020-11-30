@@ -17,21 +17,17 @@ public class BookDao implements BookServiceInterface {
     }
 
 
-    public String delete(long id) {
-        bookCatalog.getBooks().remove(id);
-        String a = "Запись удалена";
-        return a;
+    public void delete(long id) {
+        bookCatalog.getBooks().remove(id); }
 
-    }
-
-    public Map<Long, Book> showBook() {
+    public Map<Long, Book> getAllBooks() {
         Map book = bookCatalog.getBooks();
         return book;
     }
 
     public Long createId() {
-        Set<Long> longs = bookCatalog.getBooks().keySet();
-        Long max = Collections.max(longs);
+        Set<Long> ides = bookCatalog.getBooks().keySet();
+        Long max = Collections.max(ides);
         return max + 1;
     }
 

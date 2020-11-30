@@ -2,7 +2,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
-public class ClientDao implements ClientDaoInterface{
+public class ClientDao implements ClientDaoInterface {
     private ClientCatalog clientCatalog;
 
     public ClientDao(ClientCatalog clientCatalog) {
@@ -16,33 +16,31 @@ public class ClientDao implements ClientDaoInterface{
     }
 
 
-    public String delete(long id) {
+    public void delete(long id) {
         clientCatalog.getClient().remove(id);
-        String a = "Клиент удален";
-        return a;
-
     }
 
-    public Map<Long, Client> showClient() {
+    public Map<Long, Client> getClients() {
         Map<Long, Client> client = clientCatalog.getClient();
         return client;
     }
 
     public Long createId() {
-        Set<Long> longs = clientCatalog.getClient().keySet();
-        Long max = Collections.max(longs);
+        Set<Long> ides = clientCatalog.getClient().keySet();
+        Long max = Collections.max(ides);
         return max + 1;
     }
 
     public Client addClient(String firstName, String secondName, int age) {
         Map<Long, Client> clients = clientCatalog.getClient();
         clients.put(createId(), new Client(createId(), firstName, secondName, age));
-        return clients.get(createId()-1);
+        return clients.get(createId() - 1);
     }
-    public Client updateClient (Client client){
+
+    public Client updateClient(Client client) {
         Long id = client.getId();
-        clientCatalog.getClient().put(id,client);
-        return  clientCatalog.getClient().put(id,client);
+        clientCatalog.getClient().put(id, client);
+        return clientCatalog.getClient().put(id, client);
 
     }
 }
